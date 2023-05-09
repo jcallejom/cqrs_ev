@@ -1,0 +1,57 @@
+{
+	"info": {
+		"_postman_id": "753cc895-fa94-47b7-b2c4-91d6610c8406",
+		"name": "prueba_arquitectura",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "saveSearch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"hotelId\": \"1234aBc\",\r\n\"checkIn\": \"29/12/2023\",\r\n\"checkOut\": \"31/12/2023\",\r\n\"ages\": [30, 29, 1, 3]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/count/963ba6b9-9f3a-465b-8cf3-43401ca73121",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"count",
+						"963ba6b9-9f3a-465b-8cf3-43401ca73121"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

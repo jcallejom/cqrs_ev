@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "b8e20b8d-45cb-4d54-817b-d7f3fb502fdc",
+		"name": "prueba_arquitectura",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4915425"
+	},
+	"item": [
+		{
+			"name": "saveSearch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"hotelId\": \"1234aBc\",\r\n\"checkIn\": \"29/12/2023\",\r\n\"checkOut\": \"31/12/2023\",\r\n\"ages\": [30, 29, 1, 3]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "changecheckin",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n\"checkIn\": \"29/12/2029\"\r\n\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/changecheckin/8b2b09fc-5ae2-4867-9012-12e943d34d9d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"changecheckin",
+						"8b2b09fc-5ae2-4867-9012-12e943d34d9d"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "'d4071c1b-1d62-41da-b02f-e44c19669695'",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteSearch",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/delete/0eb3d20b-9c48-4b55-874c-1b243225482f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"delete",
+						"0eb3d20b-9c48-4b55-874c-1b243225482f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/count/963ba6b9-9f3a-465b-8cf3-43401ca73121",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"count",
+						"963ba6b9-9f3a-465b-8cf3-43401ca73121"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
