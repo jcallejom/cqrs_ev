@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,10 @@ import com.prueba.reservas.cmd.api.command.SaveSearchCommand;
 import com.prueba.reservas.cmd.api.vo.SaveSearchResponse;
 import com.prueba.reservas.common.dto.BaseResponse;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 @RestController
 @RequestMapping(path="/v1/search")
 public class SaveSearchController {
@@ -27,7 +32,10 @@ public class SaveSearchController {
 	
 	@Autowired 
 	private CommandDispatcher commandDispatcher;
-	
+	@Operation(description = "save search bundled into Response", summary ="Return 400 if Could not generate search")
+	  @ApiResponses(value = {@ApiResponse(responseCode = "200",description = "Exito"),
+	  @ApiResponse(responseCode = "500", description = "Internal error")})
+	  @GetMapping
 	@PostMapping
 	public ResponseEntity<BaseResponse> openAccount(@Valid @RequestBody SaveSearchCommand command){
 		var id=UUID.randomUUID().toString();

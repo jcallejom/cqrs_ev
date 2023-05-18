@@ -1,6 +1,11 @@
 server:
   port: 8081
-
+springdoc:
+  swagger-ui:
+    path: /swagger.html # swagger custom path
+    enabled: true  # Disabling the swagger-ui production enviroments always false
+  packagesToScan: com.prueba.reservas.cmd.api.controllers, com.prueba.reservas.cmd.api.command
+  pathsToMatch: /v1, /**
 spring:
   data:
     mongodb:

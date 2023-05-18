@@ -8,8 +8,12 @@
   <name>hotelreservations</name>
   
     <properties>
-  		<maven.compiler.source>11</maven.compiler.source>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
+		<java.version>11</java.version>
+		<swagger-v3-openapi.version>1.6.15</swagger-v3-openapi.version>
 	 </properties>
 	 <modules>
 		 <module>../cqrsev/cqrs.core</module>
