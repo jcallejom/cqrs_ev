@@ -34,8 +34,7 @@ public class SaveSearchController {
 	private CommandDispatcher commandDispatcher;
 	@Operation(description = "save search bundled into Response", summary ="Return 400 if Could not generate search")
 	  @ApiResponses(value = {@ApiResponse(responseCode = "200",description = "Exito"),
-	  @ApiResponse(responseCode = "500", description = "Internal error")})
-	  @GetMapping
+	@ApiResponse(responseCode = "500", description = "Internal error")})
 	@PostMapping
 	public ResponseEntity<BaseResponse> openAccount(@Valid @RequestBody SaveSearchCommand command){
 		var id=UUID.randomUUID().toString();
