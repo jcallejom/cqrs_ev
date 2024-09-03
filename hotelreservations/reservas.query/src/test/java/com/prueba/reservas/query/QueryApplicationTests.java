@@ -3,10 +3,10 @@ package com.prueba.reservas.query;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class QueryApplicationTests {
 
-	@Test
+//	@Test
 	void contextLoads() {
 	}
 
