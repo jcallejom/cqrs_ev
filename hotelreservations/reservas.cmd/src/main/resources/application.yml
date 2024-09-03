@@ -1,6 +1,11 @@
 server:
   port: 8081
-
+springdoc:
+  swagger-ui:
+    path: /swagger.html # swagger custom path
+    enabled: true  # Disabling the swagger-ui production enviroments always false
+  packagesToScan: com.prueba.reservas.cmd.api.controllers, com.prueba.reservas.cmd.api.command
+  pathsToMatch: /v1, /**
 spring:
   data:
     mongodb:
@@ -13,6 +18,7 @@ spring:
   kafka:
     producer:
       bootstrap-servers: localhost:9092
+      #bootstrap-servers: kafka:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     template:

@@ -21,8 +21,11 @@ services:
       - KAFKA_ENABLE_KRAFT=no
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
-      - KAFKA_LISTENERS=PLAINTEXT://:9092
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+      - KAFKA_LISTENERS=LISTENER_SEVICE://:9092,LISTENER_KAFDROP://kafka:29092
+      - KAFKA_ADVERTISED_LISTENERS=LISTENER_SEVICE://localhost:9092,LISTENER_KAFDROP://kafka:29092
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP= LISTENER_SEVICE:PLAINTEXT, LISTENER_KAFDROP:PLAINTEXT
+      - KAFKA_INTER_BROKER_LISTENER_NAME= LISTENER_SEVICE
+      #- KAFKA_ADVERTISED_HOST_NAME=kafka
     depends_on:
       - zookeeper
   mysql:
@@ -49,7 +52,14 @@ services:
       - 27017:27017
     volumes:
       - mongodb_data:/data/db
+#
+  mongoclient:
+    image:  mongoclient/mongoclient:latest  
+    depends_on: 
+      - mongodb
 
+    ports:
+     - 3000:3000
 #database admin service
   adminer:
     #container_name: adminer
@@ -69,7 +79,15 @@ services:
       - 8978:8978
     depends_on:
       - mysql
-      
+  kafdrop:
+    image: obsidiandynamics/kafdrop:latest
+    ports:
+      - "9000:9000"
+    environment:
+      KAFKA_BROKERCONNECT: "LISTENER_KAFDROP//kafka:29092"
+    depends_on:
+      - kafka
+      - zookeeper      
 volumes:
   zookeeper_data:
     driver: local
